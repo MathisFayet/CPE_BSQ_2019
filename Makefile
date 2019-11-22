@@ -5,18 +5,17 @@
 ## Epitech Project
 ##
 
-SRC	=	\
-		\
-		\
-
-NAME	=	bsq
+SRC	=	src/bsq.c	\
+		src/my_strlen.c
 
 OBJ	=	$(SRC:.c=.o)
 
-$(NAME):	$(OBJ)
-		$()
+NAME	=	bsq
 
 all:	$(NAME)
+
+$(NAME):	$(OBJ)
+		gcc -o $(NAME) $(OBJ)
 
 clean:
 		rm -f $(OBJ)
