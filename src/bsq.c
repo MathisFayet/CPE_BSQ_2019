@@ -13,6 +13,11 @@
 
 int my_strlen(char const *str);
 
+int bsq(int i)
+{
+    return (0);
+}
+
 int main(int ac, char **av)
 {
     int length;
@@ -21,7 +26,7 @@ int main(int ac, char **av)
     int fd;
     struct stat info;
 
-    if (ac != 2)
+    if (ac != 2)    
         return (84);
     stat(av[1], &info);
     length = info.st_size;
