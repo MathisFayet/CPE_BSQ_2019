@@ -5,10 +5,10 @@
 ## Epitech Project
 ##
 
-SRC	=	src/bsq.c	\
+SRC	=	src/bsq.c		\
 		src/my_strlen.c	\
 		src/my_getnbr.c	\
-		src/print.c
+		src/main.c
 
 OBJ	=	$(SRC:.c=.o)
 
