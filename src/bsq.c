@@ -5,34 +5,56 @@
 ** Epitech Project
 */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "../include/bsq.h"
 
-int my_strlen(char const *str);
-
-int bsq(int i)
+int **mall(int **map, char *buffer, int nbline)
 {
-    return (0);
+    int i = 0;
+    int x = 0;
+
+    while (buffer[i] != '\n')
+        i++;
+    while (x <= nbline) {
+        map[x] = malloc(sizeof(int) * i + 1);
+        x++;
+    }
+    return (map);
 }
 
-int main(int ac, char **av)
+int **remplace_tab(char *buffer, int **map)
 {
-    int length;
-    int filez;
-    char *buffer;
-    int fd;
-    struct stat info;
+    int i = 0;
+    int x = 0;
+    int y = 0;
 
-    if (ac != 2)    
-        return (84);
-    stat(av[1], &info);
-    length = info.st_size;
-    buffer = malloc(sizeof(char) * length + 1);
-    fd = open(av[1], O_RDONLY);
-    filez = read(fd, buffer, length);
-    buffer[filez] = '\0';
-    write(1, buffer, my_strlen(buffer));
+    while (buffer[i] != '\0') {
+        if (buffer[i] != '\n') {
+            if (buffer[i] == '.')
+                map[y][x] = 1;
+            else if (buffer[i] == 'o')
+                map[y][x] = 0;
+            x++;
+        } else {
+            map[y][x] = -1;
+            y++;
+            x = -1;
+        }
+        i++;
+    }
+    map[y] = NULL;
+    return (map);
+}
+
+void check_map(char *buffer, int nbline, int **map, int length)
+{
+    int i = 0;
+    tab_t *bsq = malloc(sizeof(tab_t));
+    bsq->nb = 0;
+
+    while (buffer[i] != '.' && buffer[i] != 'o')
+        i++;
+    map = mall(map, &buffer[i], nbline);
+    map = remplace_tab(&buffer[i], map);
+    calc_tab(map, bsq);
+    replacefunction(&buffer[i], bsq, nbline, length);
 }
