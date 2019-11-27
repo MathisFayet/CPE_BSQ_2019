@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** My bsq 
+** My bsq
 ** File description:
 ** Epitech Project
 */
@@ -18,8 +18,10 @@ static int **mall(int **map, char *buffer, int nbline)
 
     while (buffer[i] != '\n')
         i++;
-    for (int x = 0; x <= nbline; x++)
+    while (x <= nbline) {
         map[x] = malloc(sizeof(int) * (i + 1));
+        x++;
+    }
     return (map);
 }
 
@@ -60,7 +62,7 @@ static int **calc_tab(int **map, tab_t *bsq)
             c = map[x-1][y-1];
             if (map[x][y] != 0)
                 map[x][y] = calc_min(a, b, c) + 1;
-            else 
+            else
                 map[x][y] = 0;
             check_struct(map[x][y], x, y, bsq);
             y++;
@@ -93,6 +95,6 @@ void check_map(char *buffer, int nbline, int **map, int length)
     check_error(&buffer[i], nbline);
     map = mall(map, &buffer[i], nbline);
     map = remplace_tab(&buffer[i], map);
-    map = calc_tab(map, bsq); 
+    map = calc_tab(map, bsq);
     replacefunction(&buffer[i], bsq, nbline, length);
 }

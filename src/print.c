@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** Print my bsq
 ** File description:
-** Epitech Project 
+** Epitech Project
 */
 
 #include "../include/bsq.h"
@@ -17,7 +17,7 @@ void replacefunction(char *buffer, tab_t *bsq, int nbline, int lenght)
     int display = bsq->y - recup;
     int displayback = bsq->x - recup;
 
-    while(one > displayback) {
+    while (one > displayback) {
         while (two > display) {
             buffer[(one * nbchar + three) + two] = 'x';
             two--;

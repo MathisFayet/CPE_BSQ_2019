@@ -12,7 +12,7 @@ int my_getnbr(char const *str);
 int main(int ac, char **av)
 {
     if (ac != 2)
-        return(84);
+        return (84);
     struct stat tab;
     int fd = open(av[1], O_RDONLY);
     stat(av[1], &tab);

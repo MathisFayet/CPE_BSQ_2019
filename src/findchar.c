@@ -13,14 +13,14 @@ int numbercharbylign(char *buffer)
 
     while (buffer[i] != '\n')
         i++;
-    return(i);
+    return (i);
 }
 
 static int calc_min2(int a, int b)
 {
     if (a < b)
         return (a);
-    else 
+    else
         return (b);
 }
 
