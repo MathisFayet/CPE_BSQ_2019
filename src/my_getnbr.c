@@ -1,56 +1,49 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_getnbr
+** mygetnbr
 ** File description:
-** LIBRAIRIE
+** get number
 */
 
-int len(char const *str, int i)
+int my_isnum(char c)
 {
-    int k = 0;
-
-    while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9') {
-        i++;
-        k++;
-    }
-    return (k);
+    if (c >= '0' && c <= '9')
+        return (1);
+    return (0);
 }
 
-int p(int nb, int power)
+int my_sign_str(char const *str)
 {
-    int rest = 1;
-    int ref = nb;
+    int i = 0;
+    int sign = 1;
 
-    while (power >= 1) {
-        rest = rest * ref;
-        power--;
+    while (str[i] != '\0' && my_isnum(str[i]) == 0){
+        if (str[i] == '-'){
+            sign = sign * (-1);
+        }
+        i += 1;
     }
-    return (rest);
+    return (sign);
 }
 
 int my_getnbr(char const *str)
 {
     int i = 0;
-    int sign = 1;
-    int size = 0;
     int result = 0;
 
-    while (str[i] != '\0' && (str[i] < '0' || str[i] > '9')) {
-        if (str[i] == '-') {
-            sign = sign * -1;
-         }
-        i++;
+    while (str[i] != '\0'){
+        if (my_isnum(str[i]) == 1){
+            result *= 10;
+            result += (str[i] - 48);
+            if (result == -2147483648)
+                return (2147483648);
+            else if (result > 2147483647 || result < 0)
+                return (0);
+            if (my_isnum(str[i + 1]) == 0){
+                return (result * my_sign_str(str));
+            }
+        }
+        i += 1;
     }
-    size = len(str, i);
-    while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9')) {
-        result = result + ((str[i] - '0') * p(10, size - 1));
-        size--;
-        i++;
-    }
-    if (result <= 2147483646)
-    {
-        return (result * sign);
-    } else {
-        return (0);
-    }
+    return (0);
 }
