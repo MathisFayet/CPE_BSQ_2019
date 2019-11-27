@@ -8,7 +8,9 @@
 SRC	=	src/bsq.c		\
 		src/my_strlen.c	\
 		src/my_getnbr.c	\
-		src/main.c
+		src/main.c		\
+		src/print.c 	\
+		src/findchar.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -17,7 +19,7 @@ NAME	=	bsq
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ)
+		gcc -g -o $(NAME) $(OBJ)
 
 clean:
 		rm -f $(OBJ)
