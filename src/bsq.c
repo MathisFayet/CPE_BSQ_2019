@@ -34,14 +34,14 @@ static int **remplace_tab(char *buffer, int **map)
     while (buffer[i] != '\0') {
         if (buffer[i] == '\n') {
             map[y][x] = -1;
-            y++;
+            y += 1;
             x = -1;
         }
         if (buffer[i] != '.' && buffer[i] != 'o' && buffer[i] != '\n')
             exit(84);
         map[y][x] = buffer[i] == '.' ? 1 : 0;
-        x++;
-        i++;
+        x += 1;
+        i += 1;
     }
     map[y] = NULL;
     return (map);
@@ -68,7 +68,7 @@ static int **calc_tab(int **map, tab_t *bsq)
             y++;
         }
         y = 1;
-        x++;
+        x += 1;
     }
 }
 
@@ -77,7 +77,7 @@ static void check_error(char *buffer, int nbline)
     unsigned int len = 0;
 
     while (buffer[len] != '\0') {
-        len++;
+        len += 1;
     }
     if (len % nbline != 0)
         exit(84);
@@ -90,7 +90,7 @@ void check_map(char *buffer, int nbline, int **map, int length)
     bsq->nb = 0;
 
     while (buffer[i] != '.' && buffer[i] != 'o')
-        i++;
+        i += 1;
     length = length - i;
     check_error(&buffer[i], nbline);
     map = mall(map, &buffer[i], nbline);

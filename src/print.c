@@ -9,7 +9,7 @@
 
 void replacefunction(char *buffer, tab_t *bsq, int nbline, int lenght)
 {
-    int nbchar = numbercharbylign(buffer);
+    int nhar = numbercharbylign(buffer);
     int recup = bsq->nb;
     int one = bsq->x;
     int two = bsq->y;
@@ -19,12 +19,12 @@ void replacefunction(char *buffer, tab_t *bsq, int nbline, int lenght)
 
     while (one > displayback) {
         while (two > display) {
-            buffer[(one * nbchar + three) + two] = 'x';
-            two--;
+            buffer[(one * nhar + three) + two] = 'x';
+            two -= 1;
         }
-        three--;
+        three -= 1;
         two = bsq->y;
-        one--;
+        one -= 1;
     }
     write(1, buffer, lenght);
 }

@@ -13,7 +13,7 @@ int main(int ac, char **av)
 {
     if (ac != 2)
         return (84);
-    struct stat tab;
+    struct stat tab;    
     int fd = open(av[1], O_RDONLY);
     stat(av[1], &tab);
     int lenght = tab.st_size;
